@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
 
 <!DOCTYPE html>
 <html>
@@ -9,14 +10,11 @@
 </head>
 <body>
 
-<%
-out.write("hello jsp");
-out.print("<p>hello out object</p>");
-out.println("<p>hello out println </p>");
-out.println("<p>implicit object 8 개</p>");
+<h1>scriptlet : java code 사용 </h1>
 
-// Object a = new Object();
-// a.toString();
+<%
+	out.println(new Date());
 %>
+
 </body>
 </html>
