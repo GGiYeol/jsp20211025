@@ -13,26 +13,12 @@
 </head>
 <body>
 
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
+<h1>main contents</h1>
+
+<jsp:forward page="01other.jsp"></jsp:forward>
 
 
-<%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
-%>
-<jsp:include page="04sub.jsp"></jsp:include>
-
-<h1>main1 contents</h1>
+<h1>main contents2222222222</h1>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

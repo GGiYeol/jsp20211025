@@ -13,26 +13,9 @@
 </head>
 <body>
 
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
+<h1>06to.jsp</h1>
 
-
-<%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
-%>
-<jsp:include page="04sub.jsp"></jsp:include>
-
-<h1>main1 contents</h1>
+<%= request.getAttribute("attr1") %>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<%@ page import="sample01.MyBook" %>
 <% request.setCharacterEncoding("utf-8"); %>
 
 <!DOCTYPE html>
@@ -12,26 +13,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
-
+<%
+List<MyBook> list = new ArrayList<>();
+list.add(new MyBook("abc", 30000));
+list.add(new MyBook("java", 20000));
+list.add(new MyBook("jsp", 10000));
+list.add(new MyBook("spring", 70000));
+%>
 
 <%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
+request.setAttribute("books", list);
 %>
-<jsp:include page="04sub.jsp"></jsp:include>
 
-<h1>main1 contents</h1>
+<jsp:include page="08sub.jsp"></jsp:include>
 
 </body>
 </html>
-
-
-
-
-
-
 
 
 

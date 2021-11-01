@@ -13,22 +13,23 @@
 </head>
 <body>
 
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
-
-
+<h1>page b (song)</h1>
 <%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
+List<String> songList = (List<String>) request.getAttribute("song");
 %>
-<jsp:include page="04sub.jsp"></jsp:include>
 
-<h1>main1 contents</h1>
-
+<%-- songList의 아이템들을 출력 --%>
+<ul>
+<%
+	for (String song : songList) {
+%>
+		<li><%= song %></li>
+<%
+	}
+%>
+</ul>
 </body>
 </html>
-
-
-
 
 
 

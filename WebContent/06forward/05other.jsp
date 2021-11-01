@@ -12,27 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>05other.jsp</h1>
 
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
-
-
-<%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
-%>
-<jsp:include page="04sub.jsp"></jsp:include>
-
-<h1>main1 contents</h1>
+param1 : <%= request.getParameter("param1") %>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

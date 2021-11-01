@@ -12,27 +12,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>response 기본 객체 (implicit object)</h1>
+<h2>type : HttpServletResponse (114쪽) </h2>
 
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
-
-
-<%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
-%>
-<jsp:include page="04sub.jsp"></jsp:include>
-
-<h1>main1 contents</h1>
-
+response : <%= response %> <br>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-

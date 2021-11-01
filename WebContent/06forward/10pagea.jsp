@@ -13,19 +13,25 @@
 </head>
 <body>
 
-<%-- 04sub.jsp 활용하여 메뉴 만들기 --%>
-
+<h1>page a (food)</h1>
 
 <%
-String[] list = {"home", "about", "login"};
-request.setAttribute("menuItems", list);
+String[] foodList = (String[]) request.getAttribute("food");
 %>
-<jsp:include page="04sub.jsp"></jsp:include>
 
-<h1>main1 contents</h1>
-
+<%-- foodList의 값들을 출력 --%>
+<ul>
+<%
+	for (String food : foodList) {
+%>
+		<li><%= food %></li>
+<%
+	}
+%>
+</ul>
 </body>
 </html>
+
 
 
 
