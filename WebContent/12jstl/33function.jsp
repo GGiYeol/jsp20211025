@@ -40,7 +40,6 @@ ${map.get("a") }<br>
 <%
 pageContext.setAttribute("str1", "hello world");
 pageContext.setAttribute("str2", "hello <br>world");
-
 %>
 
 ${str1 }<br>
