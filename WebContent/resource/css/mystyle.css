@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+	.myBtn{
+		padding: 5px;
+		border: 2px solid green;
+		background-color: blue;
+		color: white;
+	}
+	
+	.myHeader{
+		/*css 작성*/
+		color:green;
+		font-weight: 15px;
+		font-size: 30px;
+		
+	}
