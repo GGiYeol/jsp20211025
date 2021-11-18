@@ -13,6 +13,21 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!-- ServletContextListener 설정 -->
+	<listener>
+		<listener-class>listener01.AppListener03</listener-class>
+	</listener>
+
+	<!-- 리스너 4 동작하기 위한 코드 작성 -->
+	<listener>
+		<!-- 리스너 클래스 안에 패키지 + 리스너 -->
+		<listener-class>listener01.AppListener04</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>listener01.AppListener05</listener-class>
+	</listener>
+
 	<!-- 세션 설정 -->
 	<session-config>
 		<!-- 분 단위 -->
@@ -46,21 +61,21 @@
 		<filter-class>filter01.F03Filter</filter-class>
 	</filter>
 	<filter-mapping>
-	<filter-name>f03filter</filter-name>
-	<url-pattern>/filterex1/s03</url-pattern>
+		<filter-name>f03filter</filter-name>
+		<url-pattern>/filterex1/s03</url-pattern>
 	</filter-mapping>
-	
-	<!--필터 4가 일하도록 설정  -->
-	
-		<!-- 필터의 클래스에는 경로를 적어줌 -->
+
+	<!--필터 4가 일하도록 설정 -->
+
+	<!-- 필터의 클래스에는 경로를 적어줌 -->
 	<filter>
 		<filter-name>f04filter</filter-name>
 		<filter-class>filter01.F04Filter</filter-class>
 	</filter>
-		<filter-mapping>
-			<filter-name>f04filter</filter-name>
-			<url-pattern>/filterex1/s04</url-pattern>
-		</filter-mapping>
+	<filter-mapping>
+		<filter-name>f04filter</filter-name>
+		<url-pattern>/filterex1/s04</url-pattern>
+	</filter-mapping>
 	<!-- filter가 한번에 여러 서블릿에서 작동되거싶을때 -->
 	<filter>
 		<filter-name>f05filter</filter-name>
@@ -72,7 +87,7 @@
 		<url-pattern>/filterex2/s01</url-pattern>
 		<url-pattern>/filterex2/s02</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>f06filter</filter-name>
 		<filter-class>filter02.F06Filter</filter-class>
@@ -83,7 +98,7 @@
 		<!-- 하나의 필터로 여러 동작을 하게 만들 수 있다. -->
 		<url-pattern>/filterex2/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>f07filter</filter-name>
 		<filter-class>filter02.F07Filter</filter-class>
@@ -94,7 +109,7 @@
 		<!-- 하나의 필터로 여러 동작을 하게 만들 수 있다. -->
 		<url-pattern>/filterex2/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>f08filter</filter-name>
 		<filter-class>filter03.F08Filter</filter-class>
@@ -103,8 +118,8 @@
 		<filter-name>f08filter</filter-name>
 		<url-pattern>/filterex3/*</url-pattern>
 	</filter-mapping>
-	
-		<filter>
+
+	<filter>
 		<filter-name>f09filter</filter-name>
 		<filter-class>filter03.F09Filter</filter-class>
 	</filter>
@@ -112,7 +127,7 @@
 		<filter-name>f09filter</filter-name>
 		<url-pattern>/filterex3/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>f09exfilter</filter-name>
 		<filter-class>filter03.F0901Filter</filter-class>
@@ -121,7 +136,7 @@
 		<filter-name>f09exfilter</filter-name>
 		<url-pattern>/filterex3/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>f10filter</filter-name>
 		<filter-class>filter04.F10MemberFilter</filter-class>
@@ -130,7 +145,7 @@
 		<filter-name>f10filter</filter-name>
 		<url-pattern>/filterex4/member</url-pattern>
 	</filter-mapping>
-	
+
 	<!-- Book App Character Encoding Filter -->
 	<filter>
 		<filter-name>BookCharEncodingFilter</filter-name>
@@ -140,4 +155,5 @@
 		<filter-name>BookCharEncodingFilter</filter-name>
 		<url-pattern>/servlet08/*</url-pattern>
 	</filter-mapping>
+
 </web-app>
