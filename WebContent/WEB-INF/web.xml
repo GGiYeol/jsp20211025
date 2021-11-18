@@ -1,39 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
-  <display-name>jsp20211025</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>jsp20211025</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
 
-<!-- 세션 설정 -->
-  <session-config>
-  	<!-- 분 단위  -->
-    <session-timeout>30</session-timeout>
-  </session-config>
-  
- <!-- 서블릿 설정 -->  
- <servlet>
- 	<servlet-name>servlet0103</servlet-name>
- 	<servlet-class>servlet01.S03Servlet</servlet-class>
- </servlet>
- <servlet-mapping>
- 	<servlet-name>servlet0103</servlet-name>
- 	<url-pattern>/servlet01/servlet03</url-pattern>
- </servlet-mapping>
- 
- <!-- 서블릿설정(EX) -->
- <servlet>
- 	<servlet-name>servlet0104</servlet-name>
- 	<servlet-class>servlet01.S04Servlet</servlet-class>
- </servlet>
- <servlet-mapping>
- 	<servlet-name>servlet0104</servlet-name>
- 	<url-pattern>/servlet01/servlet04</url-pattern>
- </servlet-mapping>
- 
+	<!-- 세션 설정 -->
+	<session-config>
+		<!-- 분 단위 -->
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<!-- 서블릿 설정 -->
+	<servlet>
+		<servlet-name>servlet0103</servlet-name>
+		<servlet-class>servlet01.S03Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet0103</servlet-name>
+		<url-pattern>/servlet01/servlet03</url-pattern>
+	</servlet-mapping>
+
+	<!-- 서블릿설정(EX) -->
+	<servlet>
+		<servlet-name>servlet0104</servlet-name>
+		<servlet-class>servlet01.S04Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>servlet0104</servlet-name>
+		<url-pattern>/servlet01/servlet04</url-pattern>
+	</servlet-mapping>
+
+	<!-- 필터 설정 --><!-- 서블릿을 설정하는 것과 유사함 -->
+
+	<filter>
+		<filter-name>f03filter</filter-name>
+		<filter-class>filter01.F03Filter</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>f03filter</filter-name>
+	<url-pattern>/filterex1/s03</url-pattern>
+	</filter-mapping>
+	
+	<!--필터 4가 일하도록 설정  -->
+	
+		<!-- 필터의 클래스에는 경로를 적어줌 -->
+	<filter>
+		<filter-name>f04filter</filter-name>
+		<filter-class>filter01.F04Filter</filter-class>
+	</filter>
+		<filter-mapping>
+			<filter-name>f04filter</filter-name>
+			<url-pattern>/filterex1/s04</url-pattern>
+		</filter-mapping>
+	<!-- filter가 한번에 여러 서블릿에서 작동되거싶을때 -->
+	<filter>
+		<filter-name>f05filter</filter-name>
+		<filter-class>filter02.F05Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f05filter</filter-name>
+		<!-- url-pattern을 여러개 만들어 주면 됨 -->
+		<url-pattern>/filterex2/s01</url-pattern>
+		<url-pattern>/filterex2/s02</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>f06filter</filter-name>
+		<filter-class>filter02.F06Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f06filter</filter-name>
+		<!-- filterex2의 주소를 갖는 모든 서블릿에 필터가 작동하게 만들 수 있다. -->
+		<!-- 하나의 필터로 여러 동작을 하게 만들 수 있다. -->
+		<url-pattern>/filterex2/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>f07filter</filter-name>
+		<filter-class>filter02.F07Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f07filter</filter-name>
+		<!-- filterex2의 주소를 갖는 모든 서블릿에 필터가 작동하게 만들 수 있다. -->
+		<!-- 하나의 필터로 여러 동작을 하게 만들 수 있다. -->
+		<url-pattern>/filterex2/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>f08filter</filter-name>
+		<filter-class>filter03.F08Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f08filter</filter-name>
+		<url-pattern>/filterex3/*</url-pattern>
+	</filter-mapping>
+	
+		<filter>
+		<filter-name>f09filter</filter-name>
+		<filter-class>filter03.F09Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f09filter</filter-name>
+		<url-pattern>/filterex3/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>f09exfilter</filter-name>
+		<filter-class>filter03.F0901Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f09exfilter</filter-name>
+		<url-pattern>/filterex3/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>f10filter</filter-name>
+		<filter-class>filter04.F10MemberFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f10filter</filter-name>
+		<url-pattern>/filterex4/member</url-pattern>
+	</filter-mapping>
+	
+	<!-- Book App Character Encoding Filter -->
+	<filter>
+		<filter-name>BookCharEncodingFilter</filter-name>
+		<filter-class>servlet08.S01BookCharEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>BookCharEncodingFilter</filter-name>
+		<url-pattern>/servlet08/*</url-pattern>
+	</filter-mapping>
 </web-app>

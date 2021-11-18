@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+e<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -17,6 +17,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 
 	<!-- .container>.row>.col-2+col-10 -->
 	<div class="container">
@@ -39,31 +40,32 @@
 			</div>
 			<div class = "col-10">
 			<%-- main contents --%>
-			<h1>책 추가</h1>
+			<h1>책 수정</h1>
 			<form method="post">
+			<input type="hidden" name="index" value="${index }">
 			<!-- .form-group*5>label+input.form-control -->
 			<div class="form-group">
 			<!-- param들을 받을 수 있게 name으로 추가 -->
 				<label>제목</label>
-				<input type="text" class="form-control" name = "title">
+				<input type="text" class="form-control" name = "title" value="${book.title }">
 			</div>
 			<div class="form-group">
 				<label>저자</label>
-				<input type="text" class="form-control" name="writer">
+				<input type="text" class="form-control" name="writer"value="${book.writer }">
 			</div>
 			<div class="form-group">
 				<label>가격</label>
-				<input type="number" class="form-control"name="price">
+				<input type="number" class="form-control"name="price"value="${book.price }">
 			</div>
 			<div class="form-group">
 				<label>출판사</label>
-				<input type="text" class="form-control"name="publisher">
+				<input type="text" class="form-control"name="publisher"value="${book.publisher }">
 			</div>
 			<div class="form-group">
 				<label>재고</label>
-				<input type="number" class="form-control" name="stock">
+				<input type="number" class="form-control" name="stock"value="${book.stock }">
 			</div>
-			<input type="submit" value="등록" class="btn btn-primary">
+			<input type="submit" value="수정" class="btn btn-primary">
 			</form>
 			</div>
 		</div>

@@ -24,7 +24,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!- 책 목록을 보여줘야함  -->
+	<!-- 책 목록을 보여줘야함  -->
 	<h1>책 목록(${fn:length(books) }권)</h1>
 	<a href="25book-form.jsp">책 등록하기</a>
 	<c:if test="${empty books }">
