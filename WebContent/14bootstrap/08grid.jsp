@@ -31,6 +31,14 @@
 
 <div class="container">
 	<div class="row">
+		<div class="col">
+			<h1>서진이 바보</h1>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
 		<div class="col">Lorem.</div>
 		<div class="col">Consequatur.</div>
 		<div class="col">Totam.</div>

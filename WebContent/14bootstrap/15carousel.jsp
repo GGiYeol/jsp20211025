@@ -36,13 +36,13 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="${pageContext.request.contextPath }/resource/image/la.jpg" class="d-block w-100" alt="...">
+							<img src="${pageContext.request.contextPath }/resource/image/a.jpg" class="d-block w-100" alt="...">
 						</div>
 						<div class="carousel-item">
-							<img src="${pageContext.request.contextPath }/resource/image/ny.jpg" class="d-block w-100" alt="...">
+							<img src="${pageContext.request.contextPath }/resource/image/ b.jpg" class="d-block w-100" alt="...">
 						</div>
 						<div class="carousel-item">
-							<img src="${pageContext.request.contextPath }/resource/image/chicago.jpg" class="d-block w-100" alt="...">
+							<img src="${pageContext.request.contextPath }/resource/image/c.jpg" class="d-block w-100" alt="...">
 						</div>
 					</div>
 					<button class="carousel-control-prev" type="button" data-target="#carouselExampleSlidesOnly" data-slide="prev">
