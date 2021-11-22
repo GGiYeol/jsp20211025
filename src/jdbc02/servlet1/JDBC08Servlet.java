@@ -48,7 +48,7 @@ public class JDBC08Servlet extends HttpServlet {
 		//request 분석/가공
 		
 		//비지니스 로직
-		String sql = "SELECT CustomerName, ContactName, Address, City FROM Customers";
+		String sql = "SELECT CustomerID, CustomerName, ContactName, Address, City, Country, PostalCode FROM Customers";
 		
 		try {
 			con = pool.getConnection();
@@ -62,10 +62,13 @@ public class JDBC08Servlet extends HttpServlet {
 				
 				int i = 1;
 				
+				bean.setCustomerId(rs.getString(i++));
 				bean.setCustomerName(rs.getString(i++));
 				bean.setContactName(rs.getString(i++));
 				bean.setAddress(rs.getString(i++));
 				bean.setCity(rs.getString(i++));
+				bean.setCountry(rs.getString(i++));
+				bean.setPostalCode(rs.getString(i++));
 				
 				list.add(bean);
 				

@@ -27,19 +27,25 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th>ID</th>
 						<th>고객명</th>
 						<th>계약명</th>
 						<th>주소</th>
 						<th>도시</th>
+						<th>나라</th>
+						<th>우편번호</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach items ="${customers }" var ="customer">
 				<tr>
+					<td>${customer.customerId }</td>
 					<td>${customer.customerName }</td>
 					<td>${customer.contactName }</td>
 					<td>${customer.address }</td>
 					<td>${customer.city }</td>
+					<td>${customer.country }</td>
+					<td>${customer.postalCode }</td>
 				</tr>
 				</c:forEach>
 				</tbody>
