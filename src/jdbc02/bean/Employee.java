@@ -1,5 +1,7 @@
 package jdbc02.bean;
 
+import java.sql.Date;
+
 public class Employee {
 	
 	private String lastName;
@@ -17,5 +19,21 @@ public class Employee {
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	public void setNotes(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setPhoto(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setBirthDate(Date date) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setEmployeeID(int int1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

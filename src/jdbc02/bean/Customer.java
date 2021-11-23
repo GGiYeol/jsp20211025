@@ -3,7 +3,7 @@ package jdbc02.bean;
 //클래스를 새로 만들어서, bean 사용
 
 public class Customer {
-	private String customerId;
+	private int customerId;
 	private String postalCode;
 	private String country;
 	private String customerName;
@@ -11,10 +11,10 @@ public class Customer {
 	private String address;
 	private String city;
 
-	public String getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
 	public String getPostalCode() {
