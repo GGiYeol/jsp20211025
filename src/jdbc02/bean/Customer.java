@@ -1,5 +1,8 @@
 package jdbc02.bean;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 //클래스를 새로 만들어서, bean 사용
 
 public class Customer {
@@ -53,6 +56,7 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
 	
 	
 }
