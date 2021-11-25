@@ -56,7 +56,7 @@ public class JDBC13Servlet extends HttpServlet {
 			try (ResultSet rs = stmt.executeQuery()) {
 				if (rs.next()) {
 					int i = 1;
-					cus.setCustomerId(rs.getInt(i++));
+					cus.setCustomerID(rs.getInt(i++));
 					cus.setCustomerName(rs.getString(i++));
 					cus.setContactName(rs.getString(i++));
 					cus.setAddress(rs.getString(i++));

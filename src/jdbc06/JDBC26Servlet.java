@@ -49,7 +49,7 @@ public class JDBC26Servlet extends HttpServlet {
 			supplier.setCountry("kimkilldong");
 			supplier.setPostalCode("123123");
 			supplier.setPhone("123123");
-			supplier.setSupplierId(31);
+			supplier.setSupplierID(31);
 			//business logic
 			try(Connection con = ds.getConnection()) {
 				ok = dao.update(con, supplier);

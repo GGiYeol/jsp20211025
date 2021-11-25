@@ -62,7 +62,7 @@ public class JDBC08Servlet extends HttpServlet {
 				
 				int i = 1;
 				
-				bean.setCustomerId(rs.getInt(i++));
+				bean.setCustomerID(rs.getInt(i++));
 				bean.setCustomerName(rs.getString(i++));
 				bean.setContactName(rs.getString(i++));
 				bean.setAddress(rs.getString(i++));

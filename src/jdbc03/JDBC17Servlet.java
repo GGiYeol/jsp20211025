@@ -79,7 +79,7 @@ public class JDBC17Servlet extends HttpServlet {
 					Supplier sup = new Supplier();
 
 					int i = 1;
-					sup.setSupplierId(rs.getInt(i++));
+					sup.setSupplierID(rs.getInt(i++));
 					sup.setSupplierName(rs.getString(i++));
 					sup.setContactName(rs.getString(i++));
 					sup.setAddress(rs.getString(i++));

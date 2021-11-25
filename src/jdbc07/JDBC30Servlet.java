@@ -1,4 +1,4 @@
-package jdbc06;
+package jdbc07;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,20 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import jdbc02.bean.Customer;
-import jdbc04.dao.CustomerDAO;
+import jdbc04.dao.SupplierDAO;
 
 /**
- * Servlet implementation class JDBC25Servlet
+ * Servlet implementation class JDBC30Servlet
  */
-@WebServlet("/jdbc06/s25")
-public class JDBC25Servlet extends HttpServlet {
+@WebServlet("/JDBC30Servlet")
+public class JDBC30Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JDBC25Servlet() {
+    public JDBC30Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,28 +33,29 @@ public class JDBC25Servlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//사전작업
-		ServletContext application = request.getServletContext();
-		DataSource ds = (DataSource) application.getAttribute("dbpool");
-		CustomerDAO dao = new CustomerDAO();
-		boolean ok = false;
-		
-		//request 분석/가공
-		Customer customer = new Customer();
-		customer.setCustomerName("kimkilldong");
-		customer.setContactName("kim");
-		customer.setAddress("seoooul");
-		customer.setCity("kim");
-		customer.setCountry("japan");
-		customer.setPostalCode("123123");
-		customer.setCustomerID(101);
-		//business logic
-		try(Connection con = ds.getConnection()) {
-			ok = dao.update(con, customer);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+				ServletContext application = request.getServletContext();
+				DataSource ds = (DataSource) application.getAttribute("dbpool");
+				SupplierDAO dao = new SupplierDAO();
+				boolean ok = false;
+				
+				//request 분석
+				int supplierID = Integer.parseInt(request.getParameter("id"));
+				
+				//business logic
+				try(Connection con = ds.getConnection()) {
+					ok = dao.deleteById(con, supplierID);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+				
+				//add attribute
+				
+				//5.forward / redirect
+				String path = "/WEB-INF/view/jdbc06/v29.jsp";
+				request.getRequestDispatcher(path).forward(request, response);
+				
+	
 	}
 
 	/**

@@ -43,7 +43,7 @@ public class SupplierDAO {
 					Supplier sup = new Supplier();
 
 					int i = 1;
-					sup.setSupplierId(rs.getInt(i++));
+					sup.setSupplierID(rs.getInt(i++));
 					sup.setSupplierName(rs.getString(i++));
 					sup.setContactName(rs.getString(i++));
 					sup.setAddress(rs.getString(i++));
@@ -111,7 +111,7 @@ public class SupplierDAO {
 			pstmt.setString(i++, supplier.getPostalCode());
 			pstmt.setString(i++, supplier.getCountry());
 			pstmt.setString(i++, supplier.getPhone());
-			pstmt.setInt(i++, supplier.getSupplierId());
+			pstmt.setInt(i++, supplier.getSupplierID());
 			
 			rowCount = pstmt.executeUpdate();
 			
@@ -120,6 +120,57 @@ public class SupplierDAO {
 		}
 		
 		return rowCount == 1;
+	}
+
+	public Supplier selectById(Connection con, int supplierID) {
+		String sql = "SELECT SupplierName, "
+				+ "          ContactName, "
+				+ "          Address, "
+				+ "          City, "
+				+ "          PostalCode,"
+				+ "          Country, "
+				+ "          Phone "
+				+ "   FROM Suppliers "
+				+ "   WHERE SupplierID = ?";
+		
+		Supplier supplier = new Supplier();
+		
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, supplierID);
+			
+			try (ResultSet rs = pstmt.executeQuery()) {
+				
+				if (rs.next()) {
+					supplier.setAddress(rs.getString("Address"));
+					supplier.setSupplierName(rs.getString("SupplierName"));
+					supplier.setContactName(rs.getString("ContactName"));
+					supplier.setCity(rs.getString("City"));
+					supplier.setPostalCode(rs.getString("PostalCode"));
+					supplier.setCountry(rs.getString("Country"));
+					supplier.setPhone(rs.getString("Phone"));
+					supplier.setSupplierID(supplierID);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return supplier;
+	}
+
+	public boolean deleteById(Connection con, int supplierID) {
+		String sql = "DELETE FROM Suppliers"
+				+ "  WHERE SupplierID = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, supplierID);
+			
+			int count = pstmt.executeUpdate();
+			return count == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

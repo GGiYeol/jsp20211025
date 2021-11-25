@@ -60,7 +60,7 @@ public class JDBC15Servlet extends HttpServlet {
 					Customer cus = new Customer();
 
 					int i = 1;
-					cus.setCustomerId(rs.getInt(i++));
+					cus.setCustomerID(rs.getInt(i++));
 					cus.setCustomerName(rs.getString(i++));
 					cus.setContactName(rs.getString(i++));
 					cus.setAddress(rs.getString(i++));

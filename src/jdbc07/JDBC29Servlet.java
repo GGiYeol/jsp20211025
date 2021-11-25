@@ -1,9 +1,7 @@
-package jdbc03;
+package jdbc07;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,19 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import jdbc02.bean.Customer;
+import jdbc04.dao.CustomerDAO;
 
 /**
- * Servlet implementation class JDBC12Servlet
+ * Servlet implementation class JDBC29Servlet
  */
-@WebServlet("/jdbc03/s12")
-public class JDBC12Servlet extends HttpServlet {
+@WebServlet("/jdbc07/s29")
+public class JDBC29Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JDBC12Servlet() {
+    public JDBC29Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,46 +32,26 @@ public class JDBC12Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 0. 사전작업
+		//사전작업
 		ServletContext application = request.getServletContext();
 		DataSource ds = (DataSource) application.getAttribute("dbpool");
-		Customer cus = new Customer();
+		CustomerDAO dao = new CustomerDAO();
+		boolean ok = false;
 		
-		// 2. request 분석/가공
-		String id = request.getParameter("customerID");
+		//request 분석
+		int customerID = Integer.parseInt(request.getParameter("id"));
 		
-		
-		// 3. business logic
-		String sql = "SELECT CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country "
-				+ "FROM Customers WHERE CustomerID = " + id;
-		
-		try (Connection con = ds.getConnection();
-				Statement stmt = con.createStatement();
-				ResultSet rs = stmt.executeQuery(sql);
-				) {
+		//business logic
+		try(Connection con = ds.getConnection()) {
+			ok = dao.deleteById(con, customerID);
 			
-			if (rs.next()) {
-				
-				int i = 1;
-				cus.setCustomerID(rs.getInt(i++));
-				cus.setCustomerName(rs.getString(i++));
-				cus.setContactName(rs.getString(i++));
-				cus.setAddress(rs.getString(i++));
-				cus.setCity(rs.getString(i++));
-				cus.setPostalCode(rs.getString(i++));
-				cus.setCountry(rs.getString(i++));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 		
-		// 4. add attribute
-		request.setAttribute("customer", cus);
+		//add attribute
 		
-		// 5. forward
-		String path = "/WEB-INF/view/jdbc03/v12.jsp";
-		request.getRequestDispatcher(path).forward(request, response);
-		
+		//5.forward / redirect
 	
 	}
 
@@ -86,9 +64,3 @@ public class JDBC12Servlet extends HttpServlet {
 	}
 
 }
-
-
-
-
-
-

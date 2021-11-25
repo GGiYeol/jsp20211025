@@ -54,7 +54,7 @@ public class JDBC10Servlet extends HttpServlet {
 			while (rs.next()) {
 				Supplier supp = new Supplier();
 				
-				supp.setSupplierId(rs.getInt(1));
+				supp.setSupplierID(rs.getInt(1));
 				supp.setSupplierName(rs.getString(2));
 				supp.setContactName(rs.getString(3));
 				supp.setAddress(rs.getString(4));

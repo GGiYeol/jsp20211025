@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 //클래스를 새로 만들어서, bean 사용
 
 public class Customer {
-	private int customerId;
+	private int customerID;
 	private String postalCode;
 	private String country;
 	private String customerName;
@@ -14,11 +14,11 @@ public class Customer {
 	private String address;
 	private String city;
 
-	public int getCustomerId() {
-		return customerId;
+	public int getCustomerID() {
+		return customerID;
 	}
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 	public String getPostalCode() {
 		return postalCode;

@@ -34,8 +34,7 @@ public class CustomerDAO {
 		List<Customer> list = new ArrayList<Customer>();
 		String sql = "SELECT CustomerID, CustomerName, ContactName, Address, City, PostalCode, Country "
 				+ "FROM Customers WHERE Country = ?";
-		
-		//?가 있을 때에는 preparedStatement 가 필요하다.
+
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
 			pstmt.setString(1, country);
@@ -45,7 +44,7 @@ public class CustomerDAO {
 					Customer cus = new Customer();
 					
 					int i = 1;
-					cus.setCustomerId(rs.getInt(i++));
+					cus.setCustomerID(rs.getInt(i++));
 					cus.setCustomerName(rs.getString(i++));
 					cus.setContactName(rs.getString(i++));
 					cus.setAddress(rs.getString(i++));
@@ -63,13 +62,13 @@ public class CustomerDAO {
 	}
 
 	public boolean insert(Connection con, Customer customer) {
-
-		String sql = "INSERT INTO Customers(CustomerName, ContactName, Address, City, PostalCode, Country)"
-				+ "  VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country) "
+				+ "   VALUES (?, ?, ?, ?, ?, ?)";
+		
 		int rowCount = 0;
-		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
-			//물음표의 순서와 같게 매치시켜줘야 한다.
+			// ? 채우기 
 			pstmt.setString(1, customer.getCustomerName());
 			pstmt.setString(2, customer.getContactName());
 			pstmt.setString(3, customer.getAddress());
@@ -77,36 +76,28 @@ public class CustomerDAO {
 			pstmt.setString(5, customer.getPostalCode());
 			pstmt.setString(6, customer.getCountry());
 			
-			//이 sql이 실행되었을 때 영향을 미친 row의 개수를 리턴
-			//우리는 하나의 레코드를 넣었기 때문에 1을 리턴할 것이다.
-			
-			//ddl 을 쓸때는 executeUpdate를 써야 한다.
-			 rowCount = pstmt.executeUpdate();
-			
-			
-			
+			rowCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//그래서 잘 들어가있는지 확인(row가 하나 들어가니까, boolean문으로 제대로 됐는지 판별)
+		
 		return rowCount == 1;
 	}
 
 	public boolean update(Connection con, Customer customer) {
 		String sql = "UPDATE Customers " + 
-				"SET " + 
-				"	CustomerName = ?," + 
-				"    ContactName = ?," + 
-				"    Address = ?," + 
-				"    City = ?," + 
-				"    PostalCode = ?," + 
-				"    Country = ?" + 
-				"WHERE" + 
-				"    CustomerID = ?";
-		
+				"SET  " + 
+				"	CustomerName = ?, " + 
+				"    ContactName = ?, " + 
+				"    Address = ?, " + 
+				"    City = ?, " + 
+				"    PostalCode = ?, " + 
+				"    Country = ? " + 
+				"WHERE " + 
+				"    CustomerID = ? ";
 		int rowCount = 0;
 		
-		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 			int i = 1;
 			pstmt.setString(i++, customer.getCustomerName());
 			pstmt.setString(i++, customer.getContactName());
@@ -114,16 +105,82 @@ public class CustomerDAO {
 			pstmt.setString(i++, customer.getCity());
 			pstmt.setString(i++, customer.getPostalCode());
 			pstmt.setString(i++, customer.getCountry());
-			pstmt.setInt(i++, customer.getCustomerId());
+			pstmt.setInt(i++, customer.getCustomerID());
 			
 			rowCount = pstmt.executeUpdate();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return rowCount == 1;
 	}
+
+	public Customer selectById(Connection con, int customerID) {
+		String sql = "SELECT CustomerName, ContactName, Address, City, "
+				+ "          PostalCode, Country "
+				+ "FROM Customers "
+				+ "WHERE CustomerID = ?";
+		
+		Customer customer = new Customer();
+		
+		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, customerID);
+			
+			try (ResultSet rs = pstmt.executeQuery()) {
+				if (rs.next()) {
+					String customerName = rs.getString("CustomerName");
+					String contactName = rs.getString("ContactName");
+					String address = rs.getString("address");
+					String city = rs.getString("City");
+					String postalCode = rs.getString("PostalCode");
+					String country = rs.getString("Country");
+					
+					customer.setCustomerID(customerID);
+					customer.setCustomerName(customerName);
+					customer.setContactName(contactName);
+					customer.setAddress(address);
+					customer.setCity(city);
+					customer.setPostalCode(postalCode);
+					customer.setCountry(country);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		return customer;
+	}
+
+	public boolean deleteById(Connection con, int customerID) {
+		String sql = "DELETE FROM Customers"
+				+ "  WHERE CustomerID = ?";
+		
+		try(PreparedStatement pstmt = con.prepareStatement(sql)) {
+			pstmt.setInt(1, customerID);
+			
+			int count = pstmt.executeUpdate();
+			return count == 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
