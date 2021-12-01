@@ -24,3 +24,5 @@ FROM Products p JOIN OrderDetails od ON od.ProductID = p.ProductID
 GROUP BY o.OrderDate
 ORDER BY o.OrderDate;
 
+
+
